@@ -3,35 +3,17 @@ using namespace std;
 
 void insertionSort(int arr[], int n){
 
-    /* another method
     for(int i = 1; i < n; i++){
-       int nextVal = arr[i]; 
+        int key = arr[i]; 
+        int j = i - 1;
 
-       int j = i; 
-
-       while(j > 0 && arr[j-1] > nextVal)
-       {
-            arr[j] = arr[j-1];
+        while( j >= 0 && arr[j] > key){
+            arr[j+1] = arr[j];
             j--;
-       } 
-
-        arr[j] = nextVal;
-    }
-    */
-
-    for(int i = 1; i < n; i++)
-    {
-        for(int j = i; j > 0; j--)
-        {
-            if(arr[j] < arr[j-1])
-            {
-                int tmp = arr[j];
-                arr[j] = arr[j-1];
-                arr[j-1] = tmp;
-            }
         }
-    }
 
+        arr[j+1] = key;
+    }
 
 }
  

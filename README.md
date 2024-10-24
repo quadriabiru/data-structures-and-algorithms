@@ -1,137 +1,128 @@
-# REPO I MADE TO STORE KNOWLEDGE FROM MY DATA STRUCTURES AND ALGORITHMS CLASS FOR FUTURE REFERENCE 
+# Data Structures and Algorithms
 
-**Algorithm:** repeatable steps used to solve a problem in a finite amount of time
+Understanding the fundamentals of data structures and algorithms is crucial for efficient programming and problem-solving. This section provides a comprehensive overview of key concepts, techniques, and considerations in this field.
 
-**Data structure:** how data is organized in computer memory e.g array, list, tree, table etc.
+I initially made this repository private to serve as personal notes for my DSA class; however, I got some positive feedback when I shared it with firends and study groups so I decided to tidy it up and make it an open knowledge base.
 
-**Pointer:** variable that holds the memory address of another variable in bytes
-- syntax: dtype* variable name e.g. int* x; char* z
-- address of operator (&): returns memory address of its operand
-- dereference operator (*): returns value stored at memory address
-- arithmetic: two possible operations -> addition & subtraction
-    - adding 1 is adding size of data type e.g. 1 bytes for char or 4 bytes for int
+## Algorithm Complexity: A Simple Legend
 
-<figure 1: pointer arithmetic>
+Before diving into algorithms, it's important to understand **time complexity** and **space complexity**. These terms describe how an algorithm performs as the size of the input increases.
 
-**Strings:** C-style string is an array of characters ending in '\0'
+### **Time Complexity**
+- **O(1)**: Constant time – the algorithm takes the same amount of time, no matter the size of the input.
+- **O(n)**: Linear time – time grows directly with the size of the input (e.g., if input doubles, time doubles).
+- **O(n²)**: Quadratic time – time grows with the square of the input size (e.g., if input doubles, time quadruples).
+- **O(log n)**: Logarithmic time – time increases slowly even as input size grows (e.g., doubling the input adds only a small extra time).
+- **O(n log n)**: Log-linear time – a mix of linear and logarithmic growth, typically faster than O(n²).
 
-**Function Concepts:** when using functions in C++, parameters can be passed in 3 ways
-- pass-by-value: value of argument is copied into function parameter and changes made to parameter in function have no effect on the actual argument
+### **Space Complexity**
+- **O(1)**: Constant space – the algorithm uses a fixed amount of memory, regardless of input size.
+- **O(n)**: Linear space – memory usage grows with the size of the input.
+- **O(n²)**: Quadratic space – memory usage grows with the square of the input size.
 
-- pass-by-pointer: address of actual arguments are copied into the function parameters, changes made to value at pointer address is reflected globally
+---
 
-- pass-by-reference: to pass the reference of an argument in the calling function to the corresponding formal parameter of the called function. essentially assign the memory address of an argument to the function. 
+## Algorithms
+An **algorithm** is a sequence of repeatable steps designed to solve a specific problem within a finite amount of time. Algorithms can range from simple arithmetic operations to complex processes involving multiple data structures.
 
-**Program Memory:** divided into 4 parts:
-- program code: holds compiled code of the program
-- global variables:  remain in memoery as long as program continues
-- stack: return address for function calls, local variables for functions etc. (aka static memory)
-- heap: region of free memoery from which chinks of memory are allocated
-    - C++ has new and delete operators for allocating and deallocating memory during run time
+---
 
-<figure 2: static vs dynamic memory>
-<figure 3: static vs dynamic arrays>
+## Search Algorithms
 
-# SEARCH ALGORITHMS
-- Search algo #1: Linear search
-    - Loop through data structure e.g. array one by one and perform comparison
-    - O(n) - time complexity
-    - O(1) - space complexity
+### 1. Linear Search
+- **Description**: Scans through elements one by one.
+- **Steps**:
+  1. Start at the first element.
+  2. Compare the target value with each element.
+  3. If a match is found, return the index.
+  4. If no match is found after scanning all elements, return "not found."
+- **Time Complexity**: O(n) – Each element must be checked.
+- **Space Complexity**: O(1) – Only a few extra variables are needed.
 
-- Search algo #2: Binary search
-    - For searching for an element in a **sorted** array by repeatedly chopping search area in half
-    - O(log n) - time complexity
-    - O(1) - space complexity
-    - Can use an iterative or recurssive approach <br>
-      **- STEPS:**
-     1. ALWAYS start from middle 
-     2. Check middle element:
-        <br> if mid element > target, then target in the left half
-        <br> else if mid element < target, then target in the right half
-        <br> call function on itself and adjust start and end points
+### 2. Binary Search
+- **Description**: Efficiently searches for an element in a **sorted** array by repeatedly dividing the search interval in half.
+- **Steps**:
+  1. Find the middle element of the array.
+  2. If the middle element equals the target, return the index.
+  3. If the target is less than the middle element, repeat the search in the left half.
+  4. If the target is greater, search the right half.
+  5. Repeat until the target is found or the interval is empty.
+- **Time Complexity**: O(log n) – Each step halves the search space.
+- **Space Complexity**: O(1) – A few pointers and variables are used.
 
-# SORT ALGORITHMS
-- Bogo (ABSOLUTE NO)
-    worst-case time: never ends/infinite O(infinity)
-    best-case time: instant -> O(1)
+---
 
-- Bubble: double for, make n-1 passes, compare neighbors, swap if out of order
-    worst-case time: O(n^2)
-    space compexity = O(1) 
+## Sorting Algorithms
 
-- Insertion: double for, make n-1 passes, swap arr[1] with arr[i-1] if arr[i-1] > arr[i]
-    time complexity: O(n^2)
-    space complexity: O(1)
+### 1. Bogo Sort
+- **Description**: Randomly shuffles the array until it's sorted (highly inefficient and impractical).
+- **Steps**:
+  1. Shuffle the array randomly.
+  2. Check if it's sorted.
+  3. If not sorted, repeat step 1.
+- **Time Complexity**: O(∞) – It could theoretically go on forever.
+- **Best Case**: O(1) – The array happens to be sorted in the first try.
 
-** Divide-and-conquer sorting **
-1. Divide problem into smaller parts
-2. Independently solve each part
-3. Combine the solutions
+### 2. Bubble Sort
+- **Description**: Repeatedly compares adjacent elements and swaps them if they are in the wrong order.
+- **Steps**:
+  1. Compare the first two elements. If the first is greater, swap them.
+  2. Move to the next pair and repeat.
+  3. After one pass through the array, the largest element is "bubbled" to the correct position.
+  4. Repeat for all elements, ignoring the last sorted ones.
+- **Time Complexity**: 
+  - Best Case: O(n) – If the array is already sorted.
+  - Worst Case: O(n²) – If the array is completely reversed.
+- **Space Complexity**: O(1) – Sorting is done in place with no extra memory.
 
-- Merge: Divide array into two halves, recursively sort left and right halves, then merge two halves.
+### 3. Insertion Sort
+- **Description**: Builds a sorted array by repeatedly inserting elements into the correct position.
+- **Steps**:
+  1. Start with the second element, compare it to the first.
+  2. Insert it into its correct position relative to the first.
+  3. Repeat for each subsequent element, inserting it into the already sorted portion.
+- **Time Complexity**:
+  - Best Case: O(n) – If the array is already sorted.
+  - Worst Case: O(n²) – If the array is sorted in reverse.
+- **Space Complexity**: O(1) – Sorts the array in place.
 
-- Quick: Partition array into small and right items relative to pivot, the recursively sort the halves.
+### 4. Merge Sort
+- **Description**: A divide-and-conquer algorithm that divides the array into halves, sorts each half, and merges them back together.
+- **Steps**:
+  1. Divide the array into two halves.
+  2. Recursively sort both halves.
+  3. Merge the two sorted halves back into one.
+- **Time Complexity**: O(n log n) – Dividing the array takes log n steps, and merging takes O(n).
+- **Space Complexity**: O(n) – Requires additional memory to store the divided halves.
 
-# RCURSION
-1. Always have exit condition
-2. Any place that has an unknown number of nested elements can use recursion
-3. Define base case & recursive case
+### 5. Quick Sort
+- **Description**: Another divide-and-conquer algorithm that selects a "pivot" element and partitions the array into elements less than and greater than the pivot.
+- **Steps**:
+  1. Choose a pivot element.
+  2. Partition the array around the pivot, so that all elements less than the pivot are on one side and all elements greater are on the other.
+  3. Recursively sort the sub-arrays.
+- **Time Complexity**:
+  - Best Case: O(n log n) – The pivot divides the array evenly.
+  - Worst Case: O(n²) – If the pivot is always the smallest or largest element (bad pivot selection).
+- **Space Complexity**: O(log n) – In the best case, the recursion depth is logarithmic.
 
-# CONSIDERATIONS
-1. Data size
-    - small data (<= 100), O(n^2) is fine e.g. bubble, insertion
-    - large data, use O(nlog(n)) e.g. mergesort, quicksort
+---
 
-2. Prior knowledge about the data
-    -  e.g., is the data partially sorted? consider insertion
-    - does the data contain duplicates
+## Data Structures
+A **data structure** defines how data is organized, stored, and manipulated in computer memory. Common examples include:
+- **Arrays**: A collection of elements identified by index or key.
+- **Linked Lists**: A sequence of elements where each element points to the next.
+- **Trees**: A hierarchical structure with nodes connected by edges.
+- **Tables**: A structured format that organizes data in rows and columns.
 
-3. Memory constrains
-    - if memory is an issue, use algorithms that sort in place with O(1) e.g., insertion, bubble
+---
 
-# DATA TYPES
-- Data type #1: Stack
-    - Can create, destroy, push, pop, is_empty
-    - O(1) - time complexity (all operations take the same time)
-    - O(n) - space complexity (n stack space is created for n objects)
-    - LIFO - Last In First Out
-    - **NB:** Max size of stack must be defined on init and cannot be changed. 
-    - e.g. converting infix to post fix
+## Recursion
+Recursion is a powerful technique where a function calls itself to solve smaller instances of the same problem. Key points include:
+1. Always define an exit condition to prevent infinite recursion.
+2. Utilize recursion in scenarios with an unknown number of nested elements.
+3. Clearly distinguish between the base case (termination) and the recursive case (the call itself).
 
-- Data type #2: Matrix (Regular and Sparse)
-    - Two dimensional array defined as array[max_rows][max_columns]
-    - Sparse matrix is one with too many 0s so important to convert to sparse notation
+---
 
-- Data type #3: List (Single and Double linked list)
-
-- Data type #4: Queue
-    - FIFO data structure e.g., line of people at ATM
-    - Designed for holding elements prior to processing
-    - Linear data strcuture
-    - add = enqueue, offer()
-    - reomve = dequeue, poll()
-
-- Data type #5: Trees
-    - Used to represent heirarchical data
-    - root node is node with no ancestors
-    - leaf node are the last node 
-    - depth is distance from the root node
-    - height number of edges between root and deepest leaf node
-    - maximum number of nodes at a level are 2^level
-    - root node starts at lvl 0 2^0 = 1
-    - for a perfect binary tree, max number of nodes = 2^0 + 2^1 + ... + 2^k = 2^(h+1) - 1 on a complete tree
-    - if a tree is a perfect binary tree the max time to reach a particular node is height of tree
-    - minimum height = log2(n+1) - 1
-
-    Binary Search Tree (BST) is a binary tree where:
-    -   left node is less than right node at the same local root
-    -   nodes are arranged in descending order by height
-
-    Traversal (https://www.youtube.com/watch?v=vLNax_8gAKU&list=PLJtzaiEpVo2zx-rCqLMmcFEpZw1UpGWls&index=4)
-    - Preorder (DLR) (https://www.youtube.com/watch?v=BFLUgP08BUk&list=PLJtzaiEpVo2zx-rCqLMmcFEpZw1UpGWls&index=5)
-    - Inorder (LDR)
-    - Postorder (LRD) -- use stack
-    - Level order (https://www.youtube.com/watch?v=5s9-vJ9J5MY&list=PLJtzaiEpVo2zx-rCqLMmcFEpZw1UpGWls&index=6)
-
-
-
+By exploring these concepts, you'll gain a solid foundation in data structures and algorithms, essential for any aspiring programmer or software engineer.

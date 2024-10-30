@@ -2,7 +2,7 @@
 
 Understanding the fundamentals of data structures and algorithms is crucial for efficient programming and problem-solving. This section provides a comprehensive overview of key concepts, techniques, and considerations in this field.
 
-I initially made this repository private to serve as personal notes for my DSA class; however, I got some positive feedback when I shared it with firends and study groups so I decided to tidy it up and make it an open knowledge base.
+I initially made this repository private to serve as personal notes for my DSA class; however, I got positive feedback when I shared it with study groups so I decided to tidy it up and make it public. If you come across this, I hope it's heplful. 
 
 ## Algorithm Complexity: A Simple Legend
 
@@ -42,11 +42,12 @@ An **algorithm** is a sequence of repeatable steps designed to solve a specific 
 ### 2. Binary Search
 - **Description**: Efficiently searches for an element in a **sorted** array by repeatedly dividing the search interval in half.
 - **Steps**:
-  1. Find the middle element of the array.
-  2. If the middle element equals the target, return the index.
-  3. If the target is less than the middle element, repeat the search in the left half.
-  4. If the target is greater, search the right half.
-  5. Repeat until the target is found or the interval is empty.
+  1. Sort the array if it's not already sorted
+  2. Find the middle element of the array.
+  3. If the middle element equals the target, return the index.
+  4. If the target is less than the middle element, repeat the search in the left half.
+  5. If the target is greater, search the right half.
+  6. Repeat until the target is found or the interval is empty.
 - **Time Complexity**: O(log n) – Each step halves the search space.
 - **Space Complexity**: O(1) – A few pointers and variables are used.
 
@@ -122,7 +123,3 @@ Recursion is a powerful technique where a function calls itself to solve smaller
 1. Always define an exit condition to prevent infinite recursion.
 2. Utilize recursion in scenarios with an unknown number of nested elements.
 3. Clearly distinguish between the base case (termination) and the recursive case (the call itself).
-
----
-
-By exploring these concepts, you'll gain a solid foundation in data structures and algorithms, essential for any aspiring programmer or software engineer.
